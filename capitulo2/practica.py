@@ -1,4 +1,6 @@
 #Captura de datos de paciente
+print("-------- Práctica 1: AZ Python Essentials --------")
+print("Creador por: Paty Pizá")
 print("---- Registro básico de Pacientes ----")
 nombre = input("Nombre: ")
 edad = int(input("Edad: "))
