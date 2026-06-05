@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Python Intermediate/Day 3/practica paquetes/Cinemax"
+    ]
+}
