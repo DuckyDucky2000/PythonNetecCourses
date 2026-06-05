@@ -4,6 +4,7 @@ import random
 import statistics
 import sys
 import time
+import pandas
 
 print("Módulo math:", math.pi/2)
 print(math.pi)
@@ -11,3 +12,7 @@ print(math.pi)
 pi = 3.14
 print(pi)
 print(math.pi)
+
+
+
+print(dir(pandas))
