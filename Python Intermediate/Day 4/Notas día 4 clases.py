@@ -6,11 +6,14 @@ class Perro: #Nota: nombre de la clase en mayuscula
         self.raza = raza
         self.edad = edad 
     def ladrar(self):
-        print("¡Guau guau!")
+        print(f"{self.nombre} dice: ¡Guau guau!")
     def comer(self):
-        print("¡Ñam ñam!")
+        print(f"{self.nombre} dice: ¡Ñam ñam!")
+    def pata(self):
+        print(f"*{self.nombre} da la pata*")
     def dormir(self):
-        print("Zzzzz...")
+        print(f"{self.nombre} está durmiendo. Zzzzz...")
+
 
 firulais = Perro("Firulais", "Macho", "Labradror", 2) #instancia de la clase perro
 rocky = Perro("Rocky", "Macho", "Pastor alemán", 3) #instancia de la clase perro
@@ -24,7 +27,9 @@ for perro in [firulais, rocky, luna, bella, jolie]:
     else:
         print(f"El nombre de mi perra es {perro.nombre}, su raza es {perro.raza} y tiene {perro.edad} años.")
 
-
+jolie.ladrar()
+luna.comer()
+bella.pata()
 '''Instancia: es un objeto creado a partir de una clase. Es una representación concreta de la clase, con sus propios atributos y comportamientos. Cada instancia puede tener valores diferentes para sus atributos, lo que permite crear múltiples objetos con características únicas a partir de la misma clase.'''
 
 class Auto:

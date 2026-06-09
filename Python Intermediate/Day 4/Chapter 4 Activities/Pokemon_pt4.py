@@ -37,7 +37,7 @@ Requisitos:
         - PokemonFuego
         - PokemonAgua
         - PokemonPlanta
-        - PokemonElectrico
+        - PokemonEléctricoo
 
     Todas deberán heredar de:
         - Pokemon
@@ -47,7 +47,7 @@ Requisitos:
         - PokemonFuego :        Agregar:    lanzar_llamas()
         - PokemonAgua :         Agregar:    hidrobomba()
         - PokemonPlanta :       Agregar:    latigo_cepa()
-        - PokemonElectrico :    Agregar:    impactrueno()
+        - PokemonEléctricoo :    Agregar:    impactrueno()
 
     Crear Objetos:
         - Charmander
@@ -79,7 +79,7 @@ class Pokemon:
     # --------- PARTE 1: CLASES Y MÉTODOS ---------
     def __init__(self, nombre, tipo, nivel, vida):
         self.__nombre = nombre
-        self.__tipo = tipo
+        self.tipo = tipo
         self.__nivel = nivel
         self.__vida = vida  #hacer privado, evita que usuarios externos puedan acceder directamente a este atributo, solo se puede acceder a través de métodos específicos dentro de la clase.
     # --------- PARTE 2: MÉTODOS ---------
@@ -97,24 +97,64 @@ class Pokemon:
     # --------- PARTE 3: PROTEGER ATRIBUTOS, SETTERS, GETTERS ---------
     def get_vida(self):
         return self.vida
+    
     def get_nivel(self):
         return self.nivel
+    
     def set_vida(self, nueva_vida):
         if nueva_vida < 0 or nueva_vida > 714:
             print("Puntos de Salud Inválidos. No seas tramposo.")
         else:
             self.__vida = nueva_vida
+    
     def set_nivel(self, nuevo_nivel):
         if nuevo_nivel < 1 or nuevo_nivel > 100:
             print("El nivel no puede ser menor a 1 o mayor a 100. No seas tramposo.")
         else:
             self.__nivel = nuevo_nivel
+    
     def curarse(self, puntos):
         self.set_vida(self.get_vida() + puntos)
+    
     def subir_nivel(self):
         self.set_nivel(self.get_nivel() + 1)
 
-pikachu = Pokemon("Pikachu", "Electric", 25, 100)
-charmander = Pokemon("Charmander", "Fire", 15, 80)
-bulbasaur = Pokemon("Bulbasaur", "Grass", 20, 90)
-squirtle = Pokemon("Squirtle", "Water", 18, 85)
+pikachu = Pokemon("Pikachu", "Eléctrico", 25, 100)
+charmander = Pokemon("Charmander", "Fuego", 15, 80)
+bulbasaur = Pokemon("Bulbasaur", "Planta", 20, 90)
+squirtle = Pokemon("Squirtle", "Agua", 18, 85)
+
+class PokemonFuego(Pokemon):
+    if Pokemon.tipo == "Fuego":
+        def lanzallamas(self):
+            print(f"{self.nombre} ha usado lanzallamas.")
+    else:
+        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Fuego.")
+
+class PokemonAgua(Pokemon):
+    if Pokemon.tipo == "Agua":
+        def hidrobomba(self):
+            print(f"{self.nombre} ha lanzado una hidrobomba.")
+    else:
+        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Agua.")
+
+class PokemonPlanta(Pokemon):
+    if Pokemon.tipo == "Planta":
+        def latigo_cepa(self):
+            print(f"{self.nombre} ha usado látigo cepa.")
+    else:
+        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Planta.")
+
+class PokemonEléctrico(Pokemon):
+    if Pokemon.tipo == "Eléctrico":
+        def impactrueno(self):
+            print(f"{self.nombre} ha usado impactrueno.")
+    else:
+        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Eléctrico.")
+
+charmander.lanzallamas()
+#squirtle.hidrobomba()
+#bulbasaur.latigo_cepa()
+#pikachu.impactrueno()
+
+pikachu.lanzallamas()
