@@ -79,7 +79,7 @@ class Pokemon:
     # --------- PARTE 1: CLASES Y MÉTODOS ---------
     def __init__(self, nombre, tipo, nivel, vida):
         self.__nombre = nombre
-        self.tipo = tipo
+        self.__tipo = tipo
         self.__nivel = nivel
         self.__vida = vida  #hacer privado, evita que usuarios externos puedan acceder directamente a este atributo, solo se puede acceder a través de métodos específicos dentro de la clase.
     # --------- PARTE 2: MÉTODOS ---------
@@ -119,42 +119,43 @@ class Pokemon:
     def subir_nivel(self):
         self.set_nivel(self.get_nivel() + 1)
 
-pikachu = Pokemon("Pikachu", "Eléctrico", 25, 100)
-charmander = Pokemon("Charmander", "Fuego", 15, 80)
-bulbasaur = Pokemon("Bulbasaur", "Planta", 20, 90)
-squirtle = Pokemon("Squirtle", "Agua", 18, 85)
-
 class PokemonFuego(Pokemon):
-    if Pokemon.tipo == "Fuego":
-        def lanzallamas(self):
+    def lanzallamas(self):
+        if self.tipo() == "Fuego":
             print(f"{self.nombre} ha usado lanzallamas.")
-    else:
-        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Fuego.")
+        else:
+            print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Fuego.")
 
 class PokemonAgua(Pokemon):
-    if Pokemon.tipo == "Agua":
-        def hidrobomba(self):
+    def __init__(self, nombre, tipo, nivel, vida):
+        super().__init__(nombre, tipo, nivel, vida)
+    def hidrobomba(self):
+        if self.__tipo == "Agua":
             print(f"{self.nombre} ha lanzado una hidrobomba.")
-    else:
-        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Agua.")
+        else:
+            print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Agua.")
 
 class PokemonPlanta(Pokemon):
-    if Pokemon.tipo == "Planta":
-        def latigo_cepa(self):
+    def __init__(self, nombre, tipo, nivel, vida):
+        super().__init__(nombre, tipo, nivel, vida)
+    def latigo_cepa(self):
+        if self.__tipo == "Planta":
             print(f"{self.nombre} ha usado látigo cepa.")
-    else:
-        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Planta.")
+        else:
+            print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Planta.")
 
 class PokemonEléctrico(Pokemon):
-    if Pokemon.tipo == "Eléctrico":
-        def impactrueno(self):
+    def __init__(self, nombre, tipo, nivel, vida):
+        super().__init__(nombre, tipo, nivel, vida)
+    def impactrueno(self):
+        if self.__tipo == "Eléctrico":
             print(f"{self.nombre} ha usado impactrueno.")
-    else:
-        print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Eléctrico.")
+        else:
+            print(f"{self.nombre} no puede usar esta habilidad. No es de tipo Eléctrico.")
+
+charmander = PokemonFuego("Charmander", "Fuego", 5, 39)
+squirtle = PokemonAgua("Squirtle", "Agua", 5, 44)
+bulbasaur = PokemonPlanta("Bulbasaur", "Planta", 5, 45)
+pikachu = PokemonEléctrico("Pikachu", "Eléctrico", 5, 35)
 
 charmander.lanzallamas()
-#squirtle.hidrobomba()
-#bulbasaur.latigo_cepa()
-#pikachu.impactrueno()
-
-pikachu.lanzallamas()
