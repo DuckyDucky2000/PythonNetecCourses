@@ -134,7 +134,5 @@ Intenta ejecutar:
 
 pikachu.lanzar_llamas()
 
-Pregunta:
-
-¿Qué ocurrió?
+Pregunta: ¿Qué ocurrió?
 '''
