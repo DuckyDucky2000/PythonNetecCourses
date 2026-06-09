@@ -78,20 +78,57 @@ def formato_numeros():
 
 import re
 
-texto = "Aprendiendo Python"
-resultado = re.search("Python", texto) #Busca la palabra "Python" en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
-print(resultado.group()) #group() devuelve la parte del texto que coincide con la búsqueda, en este caso "Python".
+def expresiones_regulares():
+    texto = "Aprendiendo Python"
+    resultado = re.search("Python", texto) #Busca la palabra "Python" en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
+    print(resultado.group()) #group() devuelve la parte del texto que coincide con la búsqueda, en este caso "Python".
 
-#Metacaracteres
-texto2a = "Mi número de teléfono es 1234567890."
-texto2b = "Mi número de teléfono es 123-456-7890."
-resultado2a = re.search(r"\d+", texto2a) #Busca una secuencia de dígitos en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
-resultado2b = re.search(r"\d{3}-\d{3}-\d{4}", texto2b) # (r"") indica que es una cadena raw, donde los caracteres de escape se tratan literalmente. \d representa un dígito, {3} indica que debe haber exactamente 3 dígitos, y el guion "-" se incluye literalmente.
-print(resultado2a.group()) #1234567890
-print(resultado2b.group()) #123-456-7890
+    #Metacaracteres
+    texto2a = "Mi número de teléfono es 1234567890."
+    texto2b = "Mi número de teléfono es 123-456-7890."
+    resultado2a = re.search(r"\d+", texto2a) #Busca una secuencia de dígitos en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
+    resultado2b = re.search(r"\d{3}-\d{3}-\d{4}", texto2b) # (r"") indica que es una cadena raw, donde los caracteres de escape se tratan literalmente. \d representa un dígito, {3} indica que debe haber exactamente 3 dígitos, y el guion "-" se incluye literalmente.
+    print(resultado2a.group()) #1234567890
+    print(resultado2b.group()) #123-456-7890
 
-usuarios = ["@admin_2025", "@user123", "@python_master", "@JuanitoPerez", "@maria_garcia"]
-for usuario in usuarios:
-    resultado3 = re.search(r"\w+", usuario) #Busca una secuencia de caracteres alfanuméricos (letras, dígitos o guiones bajos) en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
-    if resultado3:
-        print(resultado3.group()) #admin_2025, user123, python_master, JuanitoPerez, maria_garcia
+    usuarios = ["@admin_2025", "@user123", "@python_master", "@JuanitoPerez", "@maria_garcia"]
+    for usuario in usuarios:
+        resultado3 = re.search(r"\w+", usuario) #Busca una secuencia de caracteres alfanuméricos (letras, dígitos o guiones bajos) en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
+        if resultado3:
+            print(resultado3.group()) #admin_2025, user123, python_master, JuanitoPerez, maria_garcia
+
+    texto4 = "Hola mundo"
+    resultado4 = re.search(r"\s", texto4) #Busca un espacio en el texto, devuelve un objeto de coincidencia si se encuentra, o None si no se encuentra.
+    print(f"Hay un espacio >{resultado4.group()}< aquí") #Devuelve un espacio, porque \s representa un espacio en blanco.
+
+#expresiones_regulares()
+
+def ejercicio_validacion_nombres():
+    nombres = [
+        "Ana García", "Carlos Pérez", "María López", "JuanMartínez", "Laura Sánchez"]
+
+    for nombre in nombres:
+        if re.search(r"\s", nombre):
+            print(f"Correcto: {nombre}")
+        else:
+            print(f"**Error: {nombre}")
+
+#ejercicio_validacion_nombres()
+
+def valores_opcionales():
+    texto = "My favorite color"
+    resultado = re.search(r"colou?r", texto)
+    print(texto, "uses", resultado.group()) #color, porque la "u" es opcional debido a "u?".
+#valores_opcionales()
+
+telefono ="+521234567890"
+resultado_telefono = re.search(r"\+?52\d{10}", telefono)
+print(telefono)
+
+telefono2 = input("Ingrese su número de teléfono: ")
+patron = r"\+?52\d{10}$"
+resultado_telefono2 = re.fullmatch(patron, telefono2)
+if resultado_telefono2:
+    print(f"El número {telefono2} es válido.")
+else:
+    print(f"El número {telefono2} no es válido. ¿Te falto tu lada, +52, tal vez números?")
