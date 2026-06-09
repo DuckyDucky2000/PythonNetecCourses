@@ -5,6 +5,12 @@ class Perro: #Nota: nombre de la clase en mayuscula
         self.sexo = sexo
         self.raza = raza
         self.edad = edad 
+    def ladrar(self):
+        print("¡Guau guau!")
+    def comer(self):
+        print("¡Ñam ñam!")
+    def dormir(self):
+        print("Zzzzz...")
 
 firulais = Perro("Firulais", "Macho", "Labradror", 2) #instancia de la clase perro
 rocky = Perro("Rocky", "Macho", "Pastor alemán", 3) #instancia de la clase perro
